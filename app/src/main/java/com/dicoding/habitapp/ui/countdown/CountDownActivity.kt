@@ -35,10 +35,8 @@ class CountDownActivity : AppCompatActivity() {
 
             //TODO 10 : Set initial time and observe current time. Update button state when countdown is finished
             viewModel.setInitialTime(habit.minutesFocus)
-            var tes = 0
             viewModel.currentTimeString.observe(this){
                 findViewById<TextView>(R.id.tv_count_down).text = it
-                tes += 1
             }
 
             //TODO 13 : Start and cancel One Time Request WorkManager to notify when time is up.
@@ -66,6 +64,8 @@ class CountDownActivity : AppCompatActivity() {
                     )
 
                     updateButtonState(false)
+                } else {
+                    workManager.cancelUniqueWork(NOTIF_UNIQUE_WORK)
                 }
             }
 

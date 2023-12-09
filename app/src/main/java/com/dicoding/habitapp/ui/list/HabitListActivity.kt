@@ -10,9 +10,9 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.dicoding.habitapp.R
 import com.dicoding.habitapp.data.Habit
 import com.dicoding.habitapp.setting.SettingsActivity
@@ -53,7 +53,7 @@ class HabitListActivity : AppCompatActivity() {
 
         //TODO 6 : Initiate RecyclerView with LayoutManager
         recycler = findViewById(R.id.rv_habit)
-        recycler.layoutManager = GridLayoutManager(this,2)
+        recycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 
         initAction()
 
