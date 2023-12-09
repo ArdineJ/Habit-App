@@ -28,7 +28,7 @@ class AddHabitActivity : AppCompatActivity(), TimePickerFragment.DialogTimeListe
         supportActionBar?.title = getString(R.string.add_habit)
 
         val factory = ViewModelFactory.getInstance(this)
-        viewModel = ViewModelProvider(this, factory).get(AddHabitViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory)[AddHabitViewModel::class.java]
 
     }
 
@@ -45,7 +45,12 @@ class AddHabitActivity : AppCompatActivity(), TimePickerFragment.DialogTimeListe
                 val startTime = findViewById<TextView>(R.id.add_tv_start_time).text.toString()
                 val priorityLevel = findViewById<Spinner>(R.id.sp_priority_level).selectedItem.toString()
                 if (title.isNotEmpty()) {
-                    val habit = Habit(title = title, minutesFocus = minutesFocus, startTime = startTime, priorityLevel = priorityLevel)
+                    val habit = Habit(
+                        title = title,
+                        minutesFocus = minutesFocus,
+                        startTime = startTime,
+                        priorityLevel = priorityLevel
+                    )
                     viewModel.saveHabit(habit)
                     finish()
                 } else {
