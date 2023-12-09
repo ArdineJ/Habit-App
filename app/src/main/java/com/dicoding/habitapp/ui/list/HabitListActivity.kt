@@ -10,8 +10,8 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dicoding.habitapp.R
 import com.dicoding.habitapp.data.Habit
@@ -53,7 +53,7 @@ class HabitListActivity : AppCompatActivity() {
 
         //TODO 6 : Initiate RecyclerView with LayoutManager
         recycler = findViewById(R.id.rv_habit)
-        recycler.layoutManager = LinearLayoutManager(this)
+        recycler.layoutManager = GridLayoutManager(this,2)
 
         initAction()
 
@@ -99,7 +99,7 @@ class HabitListActivity : AppCompatActivity() {
                 showSortingPopUpMenu()
                 true
             }
-            R.id.settings -> {
+            R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
                 true
